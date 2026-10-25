@@ -81,8 +81,11 @@ function openSettings() {
     if (window.deferredInstall) { window.deferredInstall.prompt(); return; }
     toast(/iPhone|iPad/.test(navigator.userAgent) ? 'Tap Share → Add to Home Screen' : 'Use your browser menu → Install app');
   });
-  m.inner.querySelector('#reset').addEventListener('click', () => {
-    if (confirm('Reset ALL progress? This cannot be undone.')) resetSave();
+  // Two taps to reset, so a stray tap can't wipe progress.
+  m.inner.querySelector('#reset').addEventListener('click', e => {
+    if (e.currentTarget.dataset.armed) { resetSave(); return; }
+    e.currentTarget.dataset.armed = '1';
+    e.currentTarget.textContent = 'Tap again to erase everything';
   });
 }
 
