@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a1c9e"/><stop offset="1" stop-color="#7b3fe0"/></linearGradient>
+    <linearGradient id="c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#93e7ff"/><stop offset=".4" stop-color="#19c8ff"/><stop offset="1" stop-color="#0a7bb8"/></linearGradient>
+    <linearGradient id="p" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffa3d1"/><stop offset=".4" stop-color="#ff4fa3"/><stop offset="1" stop-color="#b8146a"/></linearGradient>
+    <linearGradient id="y" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff09a"/><stop offset=".4" stop-color="#ffd02a"/><stop offset="1" stop-color="#c48a00"/></linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect x="70" y="250" width="120" height="120" rx="26" fill="url(#p)" stroke="#1a1046" stroke-width="10"/>
+  <rect x="322" y="250" width="120" height="120" rx="26" fill="url(#y)" stroke="#1a1046" stroke-width="10"/>
+  <rect x="150" y="110" width="212" height="212" rx="44" fill="url(#c)" stroke="#1a1046" stroke-width="12"/>
+  <ellipse cx="218" cy="205" rx="26" ry="30" fill="#fff" stroke="#1a1046" stroke-width="6"/>
+  <ellipse cx="294" cy="205" rx="26" ry="30" fill="#fff" stroke="#1a1046" stroke-width="6"/>
+  <circle cx="223" cy="213" r="12" fill="#1a1046"/><circle cx="299" cy="213" r="12" fill="#1a1046"/>
+  <path d="M220 255q36 32 72 0" fill="none" stroke="#1a1046" stroke-width="12" stroke-linecap="round"/>
+  <rect x="178" y="130" width="70" height="18" rx="9" fill="#fff" opacity=".6"/>
+  <text x="256" y="455" text-anchor="middle" font-family="Arial Rounded MT Bold, Arial, sans-serif" font-weight="900" font-size="88" fill="#fff" stroke="#1a1046" stroke-width="14" paint-order="stroke">BLOCK GO</text>
+</svg>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#1b1464">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Block Go</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="sky" aria-hidden="true"></div>
+
+  <header id="hud">
+    <button class="pill" id="hud-coins" data-go="shop"><span class="icon coin"></span><span class="val">0</span><span class="plus">+</span></button>
+    <button class="pill" id="hud-stars" data-go="cards"><span class="icon star"></span><span class="val">0</span></button>
+    <button class="pill" id="hud-shields" data-open="shields"><span class="icon shield"></span><span class="val">3/3</span></button>
+    <button class="round-btn" id="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </header>
+
+  <main id="screens">
+    <!-- PLAY -->
+    <section class="screen active" data-screen="play">
+      <aside id="side-events">
+        <div class="side-col">
+        <button class="side-badge" data-go="events" data-tab="hide"><span class="badge-dot" id="ticket-dot" hidden></span><b class="logo hide">HIDE<em>&amp;</em>PICK</b><small data-timer="trail">--</small></button>
+        <button class="side-badge" data-go="events" data-tab="trail"><b class="logo trail">TRAIL</b><small data-timer="trail">--</small></button>
+        </div>
+        <div class="side-col">
+        <button class="side-badge" data-go="events" data-tab="golden"><b class="logo golden">GOLDEN</b><span class="mini-bar"><i id="golden-mini"></i><span id="golden-mini-txt">0/60</span></span><small data-timer="golden">--</small></button>
+        </div>
+      </aside>
+
+      <div id="table">
+        <div id="win-dome"><small>WIN</small><b id="win-mult">x1</b></div>
+        <div id="table-top">
+          <button id="vs-badge" class="vs"><b>VS</b><small id="vs-txt">Play</small></button>
+          <div id="event-bar">
+            <span class="ev-icon"></span>
+            <div class="bar"><i id="event-fill"></i><span id="event-txt">0/400</span></div>
+            <span class="ev-reward"><span class="bolt"></span><b id="event-reward">500</b></span>
+            <small class="ev-timer" data-timer="event">--</small>
+          </div>
+          <button id="gift-badge" class="gift-orb" aria-label="Event gift"></button>
+        </div>
+        <div id="board-wrap">
+          <canvas id="board"></canvas>
+          <div id="combo-tag" hidden></div>
+        </div>
+
+        <div id="controls">
+          <button class="boost single" data-boost="single" aria-label="Single block"><span class="glyph"></span><b>0</b></button>
+          <button class="boost rotate" data-boost="rotate" aria-label="Rotate"><span class="glyph"></span><b>0</b></button>
+          <button class="boost hammer" data-boost="hammer" aria-label="Hammer"><span class="glyph"></span><b>0</b></button>
+          <button class="boost trash" data-boost="trash" aria-label="Trash piece"><span class="glyph"></span><b>0</b></button>
+          <div id="launcher">
+            <canvas id="next-piece" aria-hidden="true"></canvas>
+            <canvas id="piece"></canvas>
+            <button id="bet-chip">x1</button>
+          </div>
+          <button id="energy-pill" data-go="shop"><span class="bolt"></span><b id="energy-txt">0/100</b><small id="energy-timer"></small></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="screen" data-screen="events">
+      <div class="banner events-banner"><h1>EVENTS</h1></div>
+      <nav class="tabs" data-tabs="events">
+        <button data-tab="streak" class="active">Daily</button>
+        <button data-tab="trail">Trail</button>
+        <button data-tab="hide">Hide&amp;Pick</button>
+        <button data-tab="golden">Golden</button>
+      </nav>
+      <div class="tab-body" id="events-body"></div>
+    </section>
+
+    <!-- CARDS -->
+    <section class="screen" data-screen="cards">
+      <div class="banner cards-banner"><h1>CARDS</h1></div>
+      <div class="tab-body" id="cards-body"></div>
+    </section>
+
+    <!-- SHOP -->
+    <section class="screen" data-screen="shop">
+      <div class="banner shop-banner"><h1>SHOP</h1></div>
+      <div class="tab-body" id="shop-body"></div>
+    </section>
+
+    <!-- FRIENDS -->
+    <section class="screen" data-screen="friends">
+      <div class="banner friends-banner"><h1>FRIENDS</h1></div>
+      <nav class="tabs icon-tabs" data-tabs="friends">
+        <button data-tab="list" class="active" aria-label="Friends"><span class="ti people"></span></button>
+        <button data-tab="gifts" aria-label="Gifts"><span class="ti gift"></span><i class="dot" id="gift-dot" hidden></i></button>
+        <button data-tab="news" aria-label="News"><span class="ti horn"></span></button>
+        <button data-tab="board" aria-label="Leaderboard"><span class="ti cup"></span></button>
+      </nav>
+      <div class="tab-body" id="friends-body"></div>
+    </section>
+  </main>
+
+  <nav id="dock">
+    <button data-go="shop"><span class="di cart"></span><b>SHOP</b></button>
+    <button data-go="cards"><span class="di cards"></span><b>CARDS</b><i class="dot" id="cards-dot" hidden></i></button>
+    <button data-go="play" class="active"><span class="di play"></span><b>PLAY</b></button>
+    <button data-go="events"><span class="di flag"></span><b>EVENTS</b><i class="dot" id="events-dot" hidden></i></button>
+    <button data-go="friends"><span class="di friends"></span><b>FRIENDS</b><i class="dot" id="friends-dot" hidden></i></button>
+  </nav>
+
+  <div id="modal-root"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <canvas id="drag-piece" aria-hidden="true"></canvas>
+  <canvas id="fx" aria-hidden="true"></canvas>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
